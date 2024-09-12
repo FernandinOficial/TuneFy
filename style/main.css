@@ -1,0 +1,12 @@
+body{
+    background-color: #e5e1f1;
+}
+.controls > button {
+    border: none;
+    background-color: transparent;
+}
+i {
+    display: flex;
+    margin-left: 35px;
+    cursor: pointer;
+}
