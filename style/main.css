@@ -1,12 +1,103 @@
-body{
+body {
     background-color: #e5e1f1;
 }
-.controls > button {
+
+.photo-playlist>img {
+    border-radius: 10%;
+    width: 300px;
+}
+
+.progress-container {
+    margin-bottom: 10px;
+}
+
+.progress-container>input {
+    width: 300px;
+    height: 8px;
+    background-color: #3700ff;
+    cursor: pointer;
+}
+
+.progress-container>input::-webkit-slider-thumb {
+    /*altera a bolinha do input*/
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.progress-container>input::-moz-range-track {
+    /*alterar o track (barra de progresso)*/
+    background-color: #00ff75;
+}
+
+.progress-container>input::-moz-range-thumb {
+    /*parte percorrida do track (barra de progresso)*/
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #00ff75;
+    cursor: pointer;
+}
+.time {
+    display: flex;
+    justify-content: space-between;
+}
+.time>p{
+
+    margin-bottom: -5px;
+}
+
+#favorite-heart{
+    margin-left: 255px;
+}
+.controls {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.controls>button,
+#favorite-heart {
     border: none;
     background-color: transparent;
 }
+
 i {
     display: flex;
-    margin-left: 35px;
     cursor: pointer;
+}
+
+.container {
+    margin-left: 10dvw;
+    margin-top: 5dvh;
+}
+
+.card {
+    width: max-content;
+    height: max-content;
+    padding: 2px;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 20px;
+    transition: all .3s;
+}
+
+.card2 {
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+    background-color: #e5e1f1;
+    border-radius: 20px;
+    transition: all .2s;
+}
+
+.card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
