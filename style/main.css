@@ -1,18 +1,50 @@
+/* Importar fontes */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
-    background-color: #e5e1f1;
+    background: rgb(0,168,255);
+    background: linear-gradient(180deg, rgba(0,168,255,1) 0%, rgba(0,0,0,1) 100%);
+    height: 102dvh;
 }
-
+header {
+    background-color: #000;
+    text-align: center;
+}
+header img {
+    background-color: #fff;
+}
+header h1 {
+    background-color: #fff;
+    padding: 5px;
+}
+/* CSS do Design */
+.divnoventa {
+    width: 80%;
+    margin: 10px auto 0;
+}
+.playlist-right {
+    background-color: grey;
+}
 .photo-playlist>img {
-    border-radius: 10%;
-    width: 300px;
+    width: 523px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 15px #000;
 }
-
+.info-musica {
+    font-family: "Encode Sans", sans-serif;
+    color: #fff;
+    text-shadow: 0px 2px 5px #000;
+}
 .progress-container {
     margin-bottom: 10px;
 }
 
 .progress-container>input {
-    width: 300px;
+    width: 100%;
     height: 8px;
     background-color: #3700ff;
     cursor: pointer;
@@ -42,17 +74,19 @@ body {
     justify-content: space-between;
 }
 .time>p{
-
     margin-bottom: -5px;
 }
 
 #favorite-heart{
-    margin-left: 255px;
+    float: right;
+    margin-bottom: 50px;
 }
 .controls {
+    margin-left: 20%;
     width: 300px;
     display: flex;
     justify-content: space-around;
+    text-align: center;
 }
 
 .controls>button,
@@ -66,38 +100,55 @@ i {
     cursor: pointer;
 }
 
-.container {
-    margin-left: 10dvw;
-    margin-top: 5dvh;
-}
-
-.card {
-    width: max-content;
-    height: max-content;
-    padding: 2px;
-    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
-    border-radius: 20px;
-    transition: all .3s;
-}
-
 .card2 {
+    position: relative; /* Necessário para o posicionamento absoluto do pseudo-elemento */
     width: max-content;
     height: max-content;
     padding: 20px;
-    background-color: #e5e1f1;
-    border-radius: 20px;
-    transition: all .2s;
+    border-radius: 25px;
+    overflow: hidden; /* Garante que o blur não ultrapasse o container */
+    z-index: 1;
 }
 
-.card2:hover {
-    transform: scale(0.98);
-    border-radius: 20px;
+.card2::before {
+    content: ''; /* Necessário para criar o pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/promQueen.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Ajuste o valor do blur conforme necessário */
+    z-index: -1; /* Garante que o pseudo-elemento fique atrás do conteúdo */
 }
 
-.card:hover {
-    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+.card2 > * {
+    position: relative; /* Garante que o conteúdo da .card2 fique acima do pseudo-elemento */
 }
 
-::-webkit-scrollbar {
-    display: none;
+/* playlist */
+.bgmusica {
+    width: 10%; /* Ajuste conforme necessário */
+    float: left;
+  }
+  #playlist {
+    width: 80%; /* Ajuste conforme necessário */
+    height: 100%;
+    border-left: 1px solid #000; /* Para separar visualmente */
+    padding: 10px;
+  }
+  .bgplaylist{
+    float: left;
+    background-color: gray;
+    width: 500px;
 }
+  .music {
+    margin: 5px 0;
+    width: inherit;
+    padding: 5px;
+    background-color: #f0f0f0; /* Cor de fundo para as músicas */
+    border-radius: 5px;
+    text-align: center;
+  }

@@ -20,56 +20,115 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
-      <div class="card2">
-        <div class="photo-playlist">
-          <img src="img/deathBed.jpg" alt="foto referente à música" />
-        </div>
-        <h1>Death Bed</h1>
-        <p>Powfu | ft. beabadoobee</p>
-        <audio id="currentAudio" controls src="music/DeathBed-Powfu.mp3" type="audio/mp3" hidden></audio>
-        <button id="favorite-heart">
-          <i class="fa-regular fa-heart" style="color: #6b54b0;"></i>
-        </button>
-        <!-- Linha de Progresso -->
-        <div class="progress-container">
-          <div class="time">
-            <p id="currentTime">0:00</p>
-            <p id="totalTime">0:00</p>
+  <header>
+    <img src="/img/logo/favicon.png" alt="Logo" width="132px">
+    <h1>TuneFy</h1>
+  </header>
+  <div class="divnoventa">
+    <table class="bgmusica">
+      <tr>
+        <td>
+          <div class="container">
+            <div class="card2">
+              <div class="photo-playlist">
+                <img src="img/promQueen.jpg" alt="foto referente à música" />
+              </div>
+              <div class="info-musica">
+                <h1>Prom Queen</h1>
+                <p>Beach Bunny</p>
+              </div>
+              <audio id="currentAudio" controls src="music/PromQueen-BeachBunny.mp3" type="audio/mp3" hidden></audio>
+
+              <!-- Favorite Music -->
+              <button id="favorite-heart" onclick="favorite()">
+                <i id="favorite-heart-icon" class="fa-regular fa-heart" style="color: #000000; scale: 1.5;"></i>
+              </button>
+
+              <!-- Linha de Progresso -->
+              <div class="controls">
+                <button>
+                  <i class="fa-solid fa-shuffle" style="color: #000000;"></i>
+                </button>
+
+                <button onclick="backwardMusic()">
+                  <i class="fa-solid fa-forward-step fa-flip-horizontal fa-xl" style="color: #000000"></i>
+                </button>
+                <button onclick="play()">
+                  <i id="play" class="fa-solid fa-play fa-2xl" style="color: #000000"></i>
+                </button>
+                <button onclick="fowardMusic()">
+                  <i class="fa-solid fa-forward-step fa-xl" style="color: #000000"></i>
+                </button>
+
+                <button>
+                  <i class="fa-solid fa-repeat" style="color: #000000;"></i>
+                </button>
+              </div>
+
+              <div class="progress-container">
+                <div class="time">
+                  <p id="currentTime">0:00</p>
+                  <p id="totalTime">0:00</p>
+                </div>
+                <input type="range" id="progressBar" value="0" max="100" step="1">
+              </div>
+            </div>
           </div>
-          <input type="range" id="progressBar" value="0" max="100" step="1">
-        </div>
-        <div class="controls">
-          <button id="favorite">
-            <i class="fa-solid fa-shuffle" style="color: #6b54b0;"></i>
-          </button>
+        </td>
+      </tr>
+    </table>
 
-          <button>
-            <i class="fa-solid fa-forward-step fa-flip-horizontal fa-xl" style="color: #6b54b0"
-              onclick="backwardMusic()"></i>
-          </button>
-          <button>
-            <i id="play" class="fa-solid fa-play fa-2xl" style="color: #6b54b0" onclick="play()"></i>
-          </button>
-          <button>
-            <i class="fa-solid fa-forward-step fa-xl" style="color: #6b54b0" onclick="fowardMusic()"></i>
-          </button>
-
-          <button>
-            <i class="fa-solid fa-repeat" style="color: #6b54b0;"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="playlist">
-      <div class="music"></div>
-      <div class="music"></div>
-      <div class="music"></div>
-      <div class="music"></div>
-      <div class="music"></div>
-    </div>
+    <table class="bgplaylist">
+      <tr>
+        <td>
+          <div id="playlist">
+            <h1>Músicas Favoritas</h1>
+            <button class="music" onclick="selectMusic(0)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(1)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(2)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(3)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(4)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(5)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(6)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(7)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(8)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(9)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(10)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(11)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(12)">
+              <img src="" alt="">
+            </button>
+            <button class="music" onclick="selectMusic(13)">
+              <img src="" alt="">
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 </body>
 
