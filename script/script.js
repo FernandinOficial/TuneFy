@@ -15,13 +15,13 @@ const playlist = [    //constante onde vai receber a musica da playlist apontada
 ];
 
 const albumArtworks = [    //constante onde vai receber as artes das musicas
-    "/img/promQueen.jpg",
-    "/img/professorAntonio.jpg",
-    "/img/idfc.jpg",
-    "/img/tekit.jpg",
-    "/img/HotGirlBummer.jpg",
-    "/img/EnoughIsEnough.jpg",
-    "/img/Monsters.jpg",
+    "img/promQueen.jpg",
+    "img/professorAntonio.jpg",
+    "img/idfc.jpg",
+    "img/tekit.jpg",
+    "img/HotGirlBummer.jpg",
+    "img/EnoughIsEnough.jpg",
+    "img/Monsters.jpg",
 ];
 const titles = [    //constante onde vai receber o nome dos titulos das musicas
     "Prom Queen",
