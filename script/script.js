@@ -26,7 +26,7 @@ const albumArtworks = [    //constante onde vai receber as artes das musicas
 const titles = [    //constante onde vai receber o nome dos titulos das musicas
     "Prom Queen",
     "Antonio",
-    "idfc",
+    "Idfc",
     "Tek It",
     "Hot Girl Bummer",
     "Enough Is Enough",
@@ -117,22 +117,70 @@ function fowardMusic() {
 
 // Reproduz a música selecionada
 function playMusic() {
-    audio.src = playlist[currentIndex];
-    albumArt.src = albumArtworks[currentIndex]; // Atualiza a imagem do álbum
+    // Verifica se o áudio e a playlist estão definidos
+    if (!playlist[currentIndex] || !albumArtworks[currentIndex]) {
+        console.error('Música ou imagem não encontrada.');
+        return;
+    }
 
-    // Atualiza a imagem de fundo do pseudo-elemento
-    document.querySelector('.card2').style.setProperty('--background-image', `url(${albumArtworks[currentIndex]})`);
+    // Atualiza a fonte do áudio
+    audio.src = playlist[currentIndex];
+    
+    // Atualiza a imagem de arte do álbum
+    albumArt.src = albumArtworks[currentIndex];
+    
+    // Atualiza a imagem de fundo do pseudo-elemento ::before em .card2
+    const cardElement = document.querySelector('.card2');
+    cardElement.style.backgroundImage = `url(${albumArtworks[currentIndex]})`;
 
     // Atualiza o título e o artista
     document.querySelector('.info-musica h1').textContent = titles[currentIndex];
     document.querySelector('.info-musica p').textContent = artists[currentIndex];
 
+    // Toca a música
     audio.play();
-    const element = document.getElementById("play");
-    element.classList.remove("fa-play");
-    element.classList.add("fa-pause");
+
+    // Atualiza o ícone de play/pause
+    const playButton = document.getElementById("play");
+    playButton.classList.remove("fa-play");
+    playButton.classList.add("fa-pause");
 }
 
+
+// Função para configurar a música e o visual quando carregar a pagina
+function initializeMusicPlayer() {
+    // Atualiza a imagem de fundo para a primeira música ao carregar a página
+    document.querySelector('.card2').style.backgroundImage = `url(${albumArtworks[currentIndex]})`;
+    
+    // Atualiza a arte do álbum, título e artista da primeira música
+    albumArt.src = albumArtworks[currentIndex];
+    document.querySelector('.info-musica h1').textContent = titles[currentIndex];
+    document.querySelector('.info-musica p').textContent = artists[currentIndex];
+
+    // Define o áudio para a primeira música
+    audio.src = playlist[currentIndex];
+    
+    console.log(`Música inicial: ${titles[currentIndex]} - ${artists[currentIndex]}`);
+}
+
+// Função para reproduzir a música (pode ser chamada ao mudar de música)
+function playMusic() {
+    audio.src = playlist[currentIndex];
+    albumArt.src = albumArtworks[currentIndex];
+
+    document.querySelector('.card2').style.backgroundImage = `url(${albumArtworks[currentIndex]})`;
+    document.querySelector('.info-musica h1').textContent = titles[currentIndex];
+    document.querySelector('.info-musica p').textContent = artists[currentIndex];
+
+    audio.play();
+
+    const playButton = document.getElementById("play");
+    playButton.classList.remove("fa-play");
+    playButton.classList.add("fa-pause");
+}
+
+// Chamar a função de inicialização assim que a página carregar
+window.addEventListener('load', initializeMusicPlayer);
 
 // Função para selecionar a música da playlist
 function selectMusic(index) {

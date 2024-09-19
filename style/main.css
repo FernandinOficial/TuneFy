@@ -26,12 +26,13 @@ header h1 {
     border-radius: 35px 35px 0px 0px;
     padding: 5px;
 }
-/* CSS do Design */
-.divnoventa {
+
+
+.div-container {
     width: 58%;
-    height: 100vh;
+    height: 90dvh;
     margin: 10px auto 0;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px;
     background-color: #333333;
     padding: 10px;
 }
@@ -114,7 +115,9 @@ i {
     border-radius: 25px;
     overflow: hidden;
     z-index: 1;
-    --background-image: url('img/promQueen.jpg'); /* Imagem padrão */
+    background-image: url('img/promQueen.jpg'); /* Imagem padrão */
+    background-size: cover;
+    background-position: center;
 }
 
 .card2::before {
@@ -124,7 +127,7 @@ i {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: var(--background-image);
+    background-image: inherit; /* Usa a imagem do elemento pai */
     background-size: cover;
     background-position: center;
     filter: blur(10px);
@@ -163,26 +166,27 @@ i {
 }
   .music {
     margin: 5px 0;
-    width: 450px;
+    width: 480px;
     height: 100px;
     padding: 5px;
     background-color: #e0e0e0; /* Cor de fundo para as músicas */
     border-radius: 5px;
-    text-align: center;
+    align-items: center;
     display: block;
-  }
+    background: rgb(54,54,54);
+    background: linear-gradient(150deg, rgba(54,54,54,1) 0%, rgba(30,93,19,1) 100%);
+}
   .imgplaylist{
     width: 70px;
+    border-radius: 10px;
   }
   .music > h2{
-    
+    font-size: 25px;
+    font-weight: bold;
     margin-left: 10px;
-    color: #000 !important;
+    color: #fff !important;
   }
 .music > p {
     padding: 10px;
-}
-footer {
-    height: 20vh;
-    background-color: #000000;
+    color: #fff;
 }
