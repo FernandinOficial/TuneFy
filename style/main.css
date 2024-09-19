@@ -114,7 +114,7 @@ i {
     border-radius: 25px;
     overflow: hidden;
     z-index: 1;
-    --background-image: url(/img/promQueen.jpg); /* Imagem padrão */
+    --background-image: url('img/promQueen.jpg'); /* Imagem padrão */
 }
 
 .card2::before {
