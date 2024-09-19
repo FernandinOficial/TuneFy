@@ -1,46 +1,71 @@
-const audio = document.getElementById('currentAudio');
-const progressBar = document.getElementById('progressBar');
-const currentTimeDisplay = document.getElementById('currentTime');
-const totalTimeDisplay = document.getElementById('totalTime');
+const audio = document.getElementById('currentAudio');  //vai receber do elemento audio como HIDDEN
+const progressBar = document.getElementById('progressBar'); //vai receber a barra de progresso
+const currentTimeDisplay = document.getElementById('currentTime');  //vai receber o elemento P que é o tempo corrido
+const totalTimeDisplay = document.getElementById('totalTime');  //vai receber o elemento P que é o tempo total da musica
+const albumArt = document.querySelector('.photo-playlist img'); // Seleciona a imagem do álbum corrente
 
-const playlist = [
+const playlist = [    //constante onde vai receber a musica da playlist apontada
     "music/PromQueen-BeachBunny.mp3",
-    "music/BrooklynBloodPop-Syko.mp3",
+    "music/ProfessorAntonio.mp3",
     "music/idfc-blackbear.mp3",
     "music/TekIt-Cafune(SpeedUp).mp3",
-    "music/DisparateYouth-Santigold.mp3",
-    "music/Musica6.mp3",
-    "music/Musica7.mp3",
-    "music/Musica8.mp3",
-    "music/Musica9.mp3",
-    "music/Musica10.mp3",
-    "music/Musica11.mp3",
-    "music/Musica12.mp3",
-    "music/Musica13.mp3"
+    "music/HotGirlBummer-Blackbear.mp3",
+    "music/EnoughIsEnough(SpedUp).mp3",
+    "music/Monsters.mp3",
 ];
 
-let currentIndex = 0;
+const albumArtworks = [    //constante onde vai receber as artes das musicas
+    "/img/promQueen.jpg",
+    "/img/professorAntonio.jpg",
+    "/img/idfc.jpg",
+    "/img/tekit.jpg",
+    "/img/HotGirlBummer.jpg",
+    "/img/EnoughIsEnough.jpg",
+    "/img/Monsters.jpg",
+];
+const titles = [    //constante onde vai receber o nome dos titulos das musicas
+    "Prom Queen",
+    "Antonio",
+    "idfc",
+    "Tek It",
+    "Hot Girl Bummer",
+    "Enough Is Enough",
+    "Monsters",
+];
 
-// Atualiza a barra de progresso enquanto a música toca
-audio.addEventListener('timeupdate', () => {
-    const progress = (audio.currentTime / audio.duration) * 100;
-    progressBar.value = progress;
-    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-});
+const artists = [   //constante onde vai receber o nome dos artistas
+    "Beach Bunny",
+    "Professor Antonio",
+    "blackbear",
+    "Cafuné",
+    "blackbear",
+    "Jan Metternich",
+    "haitiboy",
+];
 
-// Permite o controle da barra de progresso pelo usuário
-progressBar.addEventListener('input', () => {
-    const seekTime = (progressBar.value / 100) * audio.duration;
-    audio.currentTime = seekTime;
-});
+let currentIndex = 0;   //index ou indexador do item atual
 
-// Atualiza a duração total da música e o máximo da barra de progresso
-audio.addEventListener('loadedmetadata', () => {
-    totalTimeDisplay.textContent = formatTime(audio.duration);
-    progressBar.max = audio.duration;
-});
+    // atualizar a barra de progresso enquanto a música toca
+    audio.addEventListener('timeupdate', () => {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progress;   
+        currentTimeDisplay.textContent = formatTime(audio.currentTime);
+    });
 
-// Reproduz ou pausa a música
+    // barra de progresso que pode ser alterado a posiçao da musica pelo usuario
+    progressBar.addEventListener('input', () => {
+        const seekTime = (progressBar.value / 100) * audio.duration;
+        audio.currentTime = seekTime;
+    });
+    audio.addEventListener('loadedmetadata', () => {
+        console.log('Duração da música:', audio.duration); // verifica a duração da música TESTE console
+
+        totalTimeDisplay.innerText = formatTime(audio.duration);  //formatação onde o totalTimeDisplay troca o texto
+    });
+    
+
+
+// reproduz ou pausa a música
 function play() {
     const element = document.getElementById("play");
     if (element.classList.contains("fa-play")) {
@@ -53,6 +78,10 @@ function play() {
         element.classList.add("fa-play");
     }
 }
+//se a musica chegar ao tempo final vai acionar a função para passar a para proxima musica
+audio.addEventListener('ended', () => { 
+    fowardMusic();
+});
 
 // Formata o tempo em minutos e segundos
 function formatTime(time) {
@@ -61,7 +90,8 @@ function formatTime(time) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// Marca ou desmarca uma música como favorita
+// marca ou desmarca uma música como favorita
+//mesma coisa que a função Play()
 function favorite() {
     const favoriteHeart = document.getElementById("favorite-heart-icon");
     if (favoriteHeart.classList.contains("fa-regular")) {
@@ -76,26 +106,39 @@ function favorite() {
 // Seleciona a música anterior
 function backwardMusic() {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : playlist.length - 1;
-    playMusic();
+    playMusic();    //tocar musica
 }
 
 // Seleciona a próxima música
 function fowardMusic() {
-    currentIndex = (currentIndex < playlist.length - 1) ? currentIndex + 1 : 0;
-    playMusic();
+    currentIndex = (currentIndex < playlist.length - 1) ? currentIndex + 1 : 0; //pergunta ternaria onde currentIndex recebe o valor da playlist.length que é o comprimento - 1
+    playMusic();    //tocar musica
 }
 
 // Reproduz a música selecionada
 function playMusic() {
     audio.src = playlist[currentIndex];
+    albumArt.src = albumArtworks[currentIndex]; // Atualiza a imagem do álbum
+
+    // Atualiza a imagem de fundo do pseudo-elemento
+    document.querySelector('.card2').style.setProperty('--background-image', `url(${albumArtworks[currentIndex]})`);
+
+    // Atualiza o título e o artista
+    document.querySelector('.info-musica h1').textContent = titles[currentIndex];
+    document.querySelector('.info-musica p').textContent = artists[currentIndex];
+
     audio.play();
     const element = document.getElementById("play");
     element.classList.remove("fa-play");
     element.classList.add("fa-pause");
 }
 
+
 // Função para selecionar a música da playlist
 function selectMusic(index) {
     currentIndex = index;
     playMusic();
 }
+
+// Cria ondas de efeito com a música
+

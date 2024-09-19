@@ -6,28 +6,34 @@
 }
 
 body {
-    background: rgb(0,168,255);
-    background: linear-gradient(180deg, rgba(0,168,255,1) 0%, rgba(0,0,0,1) 100%);
-    height: 102dvh;
+    background: rgb(179,15,15);
+background: linear-gradient(180deg, rgba(179,15,15,1) 0%, rgba(0,99,255,1) 100%);
 }
 header {
-    background-color: #000;
+    /* background-color: #000; */
     text-align: center;
 }
 header img {
     background-color: #fff;
+    border-radius: 35px 35px 0px 0px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 50px white;
 }
 header h1 {
     background-color: #fff;
+    width: 50%;
+    margin: 10px auto 0;
+    border-radius: 35px 35px 0px 0px;
     padding: 5px;
 }
 /* CSS do Design */
 .divnoventa {
-    width: 80%;
+    width: 58%;
+    height: 100vh;
     margin: 10px auto 0;
-}
-.playlist-right {
-    background-color: grey;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #333333;
+    padding: 10px;
 }
 .photo-playlist>img {
     width: 523px;
@@ -101,27 +107,28 @@ i {
 }
 
 .card2 {
-    position: relative; /* Necessário para o posicionamento absoluto do pseudo-elemento */
+    position: relative;
     width: max-content;
     height: max-content;
     padding: 20px;
     border-radius: 25px;
-    overflow: hidden; /* Garante que o blur não ultrapasse o container */
+    overflow: hidden;
     z-index: 1;
+    --background-image: url(/img/promQueen.jpg); /* Imagem padrão */
 }
 
 .card2::before {
-    content: ''; /* Necessário para criar o pseudo-elemento */
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/img/promQueen.jpg');
+    background-image: var(--background-image);
     background-size: cover;
     background-position: center;
-    filter: blur(10px); /* Ajuste o valor do blur conforme necessário */
-    z-index: -1; /* Garante que o pseudo-elemento fique atrás do conteúdo */
+    filter: blur(10px);
+    z-index: -1;
 }
 
 .card2 > * {
@@ -134,21 +141,48 @@ i {
     float: left;
   }
   #playlist {
-    width: 80%; /* Ajuste conforme necessário */
-    height: 100%;
-    border-left: 1px solid #000; /* Para separar visualmente */
     padding: 10px;
+    margin: 10px auto 0;
+  }
+  #playlist h1 {
+    text-align: center;
+    color: white;
+  }
+  #playlist button {
+    border: none;
+    padding: 15px 32px;
+    display: flex;
+    cursor: pointer;
   }
   .bgplaylist{
     float: left;
-    background-color: gray;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.548) 0%, rgba(0,0,0,0) 100%);
     width: 500px;
+    border-radius: 0px 5px 3px 0px;
 }
   .music {
     margin: 5px 0;
-    width: inherit;
+    width: 450px;
+    height: 100px;
     padding: 5px;
-    background-color: #f0f0f0; /* Cor de fundo para as músicas */
+    background-color: #e0e0e0; /* Cor de fundo para as músicas */
     border-radius: 5px;
     text-align: center;
+    display: block;
   }
+  .imgplaylist{
+    width: 70px;
+  }
+  .music > h2{
+    
+    margin-left: 10px;
+    color: #000 !important;
+  }
+.music > p {
+    padding: 10px;
+}
+footer {
+    height: 20vh;
+    background-color: #000000;
+}
