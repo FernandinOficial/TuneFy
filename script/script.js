@@ -5,9 +5,9 @@ const totalTimeDisplay = document.getElementById('totalTime');  //vai receber o 
 const albumArt = document.querySelector('.photo-playlist img'); // Seleciona a imagem do álbum corrente
 
 const playlist = [    //constante onde vai receber a musica da playlist apontada
-    "music/PromQueen-BeachBunny.mp3",
+    "music/realizetryx.mp3",
     "music/ProfessorAntonio.mp3",
-    "music/idfc-blackbear.mp3",
+    "music/24songs.mp3",
     "music/TekIt-Cafune(SpeedUp).mp3",
     "music/HotGirlBummer-Blackbear.mp3",
     "music/EnoughIsEnough(SpedUp).mp3",
@@ -15,18 +15,18 @@ const playlist = [    //constante onde vai receber a musica da playlist apontada
 ];
 
 const albumArtworks = [    //constante onde vai receber as artes das musicas
-    "img/promQueen.jpg",
+    "img/realize.jpg",
     "img/professorAntonio.jpg",
-    "img/idfc.jpg",
+    "img/songs.jpg",
     "img/tekit.jpg",
     "img/HotGirlBummer.jpg",
     "img/EnoughIsEnough.jpg",
     "img/Monsters.jpg",
 ];
 const titles = [    //constante onde vai receber o nome dos titulos das musicas
-    "Prom Queen",
+    "Realize",
     "Antonio",
-    "Idfc",
+    "24 Songs",
     "Tek It",
     "Hot Girl Bummer",
     "Enough Is Enough",
@@ -34,9 +34,9 @@ const titles = [    //constante onde vai receber o nome dos titulos das musicas
 ];
 
 const artists = [   //constante onde vai receber o nome dos artistas
-    "Beach Bunny",
+    "Trxy",
     "Professor Antonio",
-    "blackbear",
+    "playboi carti",
     "Cafuné",
     "blackbear",
     "Jan Metternich",
@@ -179,14 +179,71 @@ function playMusic() {
     playButton.classList.add("fa-pause");
 }
 
-// Chamar a função de inicialização assim que a página carregar
-window.addEventListener('load', initializeMusicPlayer);
+const favoriteHeart = document.getElementById("favorite-heart-icon");
 
-// Função para selecionar a música da playlist
+// Renderiza o estado do botão de favorito
+function likeButtonRender() {
+    if (playlist[currentIndex].liked) {
+        favoriteHeart.classList.remove('fa-regular');
+        favoriteHeart.classList.add('fa-solid');
+    } else {
+        favoriteHeart.classList.add('fa-regular');
+        favoriteHeart.classList.remove('fa-solid');
+    }
+}
+
+// Alterna o estado do botão de favorito
+function likeButtonClicked() {
+    playlist[currentIndex].liked = !playlist[currentIndex].liked; // Alterna o valor de 'liked'
+    likeButtonRender();
+    localStorage.setItem('playlist', JSON.stringify(playlist)); // Armazenando a playlist atualizada
+}
+
+// Adiciona o evento de clique ao botão de favorito
+document.getElementById("favorite-heart").addEventListener('click', likeButtonClicked);
+
+// Inicializa o estado do botão ao carregar a página
+window.addEventListener('load', () => {
+    likeButtonRender();
+});
+
 function selectMusic(index) {
     currentIndex = index;
     playMusic();
 }
+//muda a velocidade da musica
+const speedControl = document.getElementById('speedControl');
 
-// Cria ondas de efeito com a música
+// Define a velocidade inicial
+audio.playbackRate = 1;
+
+// Adiciona um evento para mudar a velocidade da música
+speedControl.addEventListener('change', () => {
+    audio.playbackRate = parseFloat(speedControl.value);
+});
+// volume da musica
+const volumeControl = document.getElementById('volumeControl');
+
+// Define o volume inicial
+audio.volume = 1; // Volume máximo
+
+// Adiciona um evento para mudar o volume
+volumeControl.addEventListener('input', () => {
+    audio.volume = volumeControl.value;
+});
+// pular tempo de 10
+const backwardButton = document.getElementById('backward10');
+const forwardButton = document.getElementById('forward10');
+
+// Adiciona evento para voltar 10 segundos
+backwardButton.addEventListener('click', () => {
+    audio.currentTime = Math.max(0, audio.currentTime - 10);
+});
+
+// Adiciona evento para avançar 10 segundos
+forwardButton.addEventListener('click', () => {
+    audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+});
+
+
 

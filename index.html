@@ -40,29 +40,38 @@
             <div class="container">
               <div class="card2">
                 <div class="photo-playlist">
-                  <img src="img/promQueen.jpg" alt="foto referente à música" />
+                  <img src="img/realize.jpg" alt="foto referente à música" />
                 </div>
                 <div class="info-musica">
                   <h1>Prom Queen</h1>
                   <p>Beach Bunny</p>
                 </div>
+                <button id="backward10">Voltar 10s</button>
                 <audio
                   id="currentAudio"
                   controls
-                  src="music/PromQueen-BeachBunny.mp3"
+                  src="music/realizetryx.mp3"
                   type="audio/mp3"
                   hidden
                 ></audio>
+                <button id="forward10">Avançar 10s</button>
 
+                <label for="speedControl">Velocidade:</label> 
+                  <select id="speedControl">
+                      <option value="0.5">0.5x</option>
+                      <option value="1" selected>1x</option>
+                      <option value="1.5">1.5x</option>
+                      <option value="2">2x</option>
+                  </select>
+                  <label for="volumeControl">Volume:</label>
+                  <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+                  
                 <!-- Favorite Music -->
                 <button id="favorite-heart" onclick="favorite()">
-                  <i
-                    id="favorite-heart-icon"
-                    class="fa-regular fa-heart"
-                    style="color: #000000; scale: 1.5"
-                  ></i>
+                  <i id="favorite-heart-icon" class="fa-regular fa-heart" style="color: #000000; scale: 1.5"></i>
                 </button>
-
+              
+                
                 <!-- Linha de Progresso -->
                 <div class="controls">
                   <button onclick="shuffle()">
@@ -112,16 +121,15 @@
           </td>
         </tr>
       </table>
-
       <table class="bgplaylist">
         <tr>
           <td>
             <div id="playlist">
               <h1>Playlist</h1>
               <button class="music" onclick="selectMusic(0)">
-                <img class="imgplaylist" src="img/promQueen.jpg" alt="" />
-                <h2>Prom Queen</h2>
-                <p>Beach Bunny</p>
+                <img class="imgplaylist" src="img/realize.jpg" alt="" />
+                <h2>Realize</h2>
+                <p>Trxy</p>
               </button>
               <button class="music" onclick="selectMusic(1)">
                 <img
@@ -133,9 +141,9 @@
                 <p>Professor Antonio</p>
               </button>
               <button class="music" onclick="selectMusic(2)">
-                <img class="imgplaylist" src="img/idfc.jpg" alt="" />
-                <h2>Idfc</h2>
-                <p>blackbear</p>
+                <img class="imgplaylist" src="img/songs.jpg" alt="" />
+                <h2>24 Songs</h2>
+                <p>Playboi Carti</p>
               </button>
               <button class="music" onclick="selectMusic(3)">
                 <img class="imgplaylist" src="img/tekit.jpg" alt="" />
